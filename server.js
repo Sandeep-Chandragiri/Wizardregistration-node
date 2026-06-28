@@ -18,8 +18,13 @@ app.use("/sessions", sessionRoutes);
 app.use("/logs", logRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log("MongoDB Connected"))
-    .catch(err => console.log(err));
+    .then(() => {
+        console.log("✅ MongoDB Atlas Connected");
+    })
+    .catch((err) => {
+        console.error("❌ MongoDB Connection Error:");
+        console.error(err);
+    });
 
     const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
